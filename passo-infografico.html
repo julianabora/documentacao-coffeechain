@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <style>
+/* Base */
+.conteudo {
+  background: #E7E7E7;
+  font-family: "Nunito", Helvetica, Arial, sans-serif;
+}
+
+.pdocumentos-steps-section {
+  width: 100%;
+  padding: 40px 0;
+}
+
+/* Grid: padrão desktop = 4 colunas (ajuste conforme seu último envio) */
+.pdocumentos-steps-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* Até 1024px -> 3 colunas */
+@media (max-width: 1024px) {
+  .pdocumentos-steps-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Até 1023 -> 3 colunas */
+@media (max-width: 1023px) {
+  .pdocumentos-steps-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Até 768 -> 2 colunas */
+@media (max-width: 768px) {
+  .pdocumentos-steps-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Até 417px -> 1 coluna */
+@media (max-width: 417px) {
+    .pdocumentos-steps-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Visual dos cards */
+.pdocumentos-step-item {
+  text-align: center;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(243, 243, 243, 0.42);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.pdocumentos-step-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.09);
+}
+
+.pdocumentos-step-icon {
+    width: 165px;
+    height: 135px;
+    margin: 8px auto 23px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.pdocumentos-step-icon img {
+  max-width: 90%;
+  height: auto;
+  display: block;
+}
+
+/* textos */
+.pdocumentos-step-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #5E5C5C;
+}
+
+.pdocumentos-step-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #675D5D;
+}
+
+.pdocumentos-step-text a{
+  background: #559d3a;
+    padding: 8px 16px;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;}
+
+/* header */
+.pdocumentos-header-section { padding: 40px 20px; }
+
+.pdocumentos-header-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.pdocumentos-header-left { width: 70%; text-align: right; margin-top: -60px; }
+.pdocumentos-header-logo { width: 300px; margin-bottom: 15px; }
+
+.pdocumentos-header-subtext {
+   color: #559d3a;;
+  font-size: 28px;
+  line-height: 30px;
+  margin-top: 0;
+}
+
+.pdocumentos-header-right { width: 50%; display: flex; align-items: center; gap: 25px; }
+.img-doc { max-width: 100%; width: 50%; height: auto; }
+
+@media (max-width: 991px) {.img-doc{width: 100%;} }
+
+@media (max-width: 768px) {
+
+  .pdocumentos-header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .pdocumentos-header-left, .pdocumentos-header-right {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+  }
+  .pdocumentos-header-logo { width: 60%; }
+  .img-doc { width: 50%; margin-top: -30px; }
+
+  .pdocumentos-step-text {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+ .pdocumentos-header-side-image{margin: auto;}
+}
+
+@media (max-width: 567px) {
+    .pdocumentos-header-logo {width: 100%;}
+    .img-doc { width: 70%; margin-top: -45px;}
+}
+</style>
+
+</head>
+
+<body>
+<div id="wrapper" class="conteudo">
+
+<section class="pdocumentos-header-section" aria-label="section">
+
+    <div class="spacer-100"></div>
+
+    <div class="pdocumentos-header-container">
+
+        <!-- ESQUERDA -->
+        <div class="pdocumentos-header-left">
+            <img src="images/logo-coffee-n.png" alt="Logo" class="pdocumentos-header-logo">
+            <p class="pdocumentos-header-subtext">
+                Veja como funciona o processo de documentação
+            </p>
+        </div>
+
+        <!-- DIREITA -->
+        <div class="pdocumentos-header-right">
+            <div class="pdocumentos-header-side-image">
+                <img src="images/img-doc.png" alt="Imagem ilustrativa" class="img-doc">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="space-40"></div>
+
+    <div class="pdocumentos-steps-section">
+        <div class="pdocumentos-steps-container">
+
+            <!-- VISUALIZAÇÃO GERAL (novo primeiro item) -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step1.png" alt="Visão geral"></div>
+                <h3 class="pdocumentos-step-title">Acesse o Guia</h3>
+                <p class="pdocumentos-step-text">
+                    Acesse o guia completo e aprenda o passo a passo da plataforma de documentação.<br>
+                    <a href="guia.html">Abrir guia completo</a>
+                </p>
+            </div>
+
+            <!-- 1 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step2.png" alt="Passo 1"></div>
+                <h3 class="pdocumentos-step-title">1. Acesso à Plataforma</h3>
+                <p class="pdocumentos-step-text">
+                    Entre em Documentos → escolha o contrato → visualize amostras, documentos e tracking.<br>
+                    <a href="guia.html#sec2">Ir para seção 2</a>
+                </p>
+            </div>
+
+            <!-- 2 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step3.png" alt="Passo 2"></div>
+                <h3 class="pdocumentos-step-title">2. Envio dos Documentos (Fases)</h3>
+                <p class="pdocumentos-step-text">
+                    Envie o primeiro documento obrigatório: Shipping Instruction.<br>
+                    <a href="guia.html#sec4-1">Ir para seção 4.1</a>
+                </p>
+            </div>
+
+            <!-- 3 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step4.png" alt="Passo 3"></div>
+                <h3 class="pdocumentos-step-title">3. Análise da Coffeechain</h3>
+                <p class="pdocumentos-step-text">
+                    Documento pode ser aprovado ou rejeitado. Se rejeitado, basta reenviar.<br>
+                    <a href="guia.html#sec4-2">Ir para seção 4.2</a>
+                </p>
+            </div>
+
+            <!-- 4 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step5.png" alt="Passo 4"></div>
+                <h3 class="pdocumentos-step-title">4. Avaliação de Amostras</h3>
+                <p class="pdocumentos-step-text">
+                    Receba, avalie e aprove ou rejeite a amostra enviada.<br>
+                    <a href="guia.html#sec4-3">Ir para seção 4.3</a>
+                </p>
+            </div>
+
+            <!-- 5 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step6.png" alt="Passo 5"></div>
+                <h3 class="pdocumentos-step-title">5. Liberação de Documentos</h3>
+                <p class="pdocumentos-step-text">
+                    Baixe, confira e aprove/rejeite documentos liberados (ex.: Marcação de Sacaria).<br>
+                    <a href="guia.html#sec4-4">Ir para seção 4.4</a>
+                </p>
+            </div>
+
+            <!-- 6 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step7.png" alt="Passo 6"></div>
+                <h3 class="pdocumentos-step-title">6. Tracking da Carga</h3>
+                <p class="pdocumentos-step-text">
+                    Após as aprovações, acompanhe o envio pelo link externo de rastreamento.<br>
+                    <a href="guia.html#sec4-5">Ir para seção 4.5</a>
+                </p>
+            </div>
+
+            <!-- 7 -->
+            <div class="pdocumentos-step-item">
+                <div class="pdocumentos-step-icon"><img src="images/step8.png" alt="Passo 7"></div>
+                <h3 class="pdocumentos-step-title">7. Encerramento do Contrato</h3>
+                <p class="pdocumentos-step-text">
+                    Todo o histórico permanece disponível e o contrato completo pode ser baixado.<br>
+                    <a href="guia.html#sec4-6">Ir para seção 4.6</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="spacer-100"></div>
+
+</section>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/designesia.js"></script>
+
+</body>
+</html>

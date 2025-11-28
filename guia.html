@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+  <style>
+    /* Base */
+    .conteudo {
+      background: #E7E7E7;
+      font-family: "Nunito", Helvetica, Arial, sans-serif;
+    }
+
+    .documentacao-steps-section {
+      width: 100%;
+      padding: 40px 0;
+    }
+
+    /* Container sem grid — itens 100% um abaixo do outro */
+    .documentacao-steps-container {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      max-width: 1400px;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .documentacao-steps-container .documentacao-step-item {
+      margin-bottom: 30px;
+    }
+
+    /* Visual dos cards */
+    .documentacao-step-item {
+      text-align: left;
+      padding: 30px;
+      border-radius: 18px;
+      background: rgba(243, 243, 243, 0.42);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    /* pequeno efeito hover em desktop */
+    .documentacao-step-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.09);
+    }
+
+    /* textos */
+    .documentacao-step-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #5E5C5C;
+    }
+
+    .documentacao-step-text {
+      font-size: 14px;
+      line-height: 20px;
+      color: #675D5D;
+    }
+
+    /* header */
+    .documentacao-header-section { padding: 40px 20px; }
+
+    .documentacao-header-container {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      margin-top: 30px;
+    }
+
+    .documentacao-header-left {
+      width: 70%;
+      text-align: right;
+      margin-top: -60px;
+    }
+
+    .documentacao-header-logo {
+      width: 300px;
+      margin-bottom: 15px;
+    }
+
+    .documentacao-header-subtext {
+      color: #559d3a;
+      font-size: 28px;
+      line-height: 30px;
+      margin-top: 0;
+    }
+
+    .documentacao-header-right {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .img-doc {
+      max-width: 100%;
+      width: 50%;
+      height: auto;
+    }
+
+
+    .documentacao-step-text.tit strong{ font-size: 20px;}
+
+    .intro .documentacao-step-text{font-size: 18px;line-height: 24px;text-align: center;}
+
+    .intro .documentacao-step-title{text-align: center;font-size: 28px;}
+
+    .prob{padding: 20px;background: #dddddd;border-radius: 10px;font-style: italic; margin-top: 30px;}
+
+    .linha-doc{position: relative;display: block;margin-top: 35px;margin-bottom: 35px;opacity: 0.3;}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+  padding: 0 0;
+}
+
+.faq-item {
+  margin-bottom: 12px;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: #d5d5d5;
+  padding: 14px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+ z-index: 1;
+position: relative;
+}
+ 
+ 
+.faq-question.active {
+  background: #559d3a !important;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+
+.faq-answer p{
+  padding: 10px 0;
+}
+
+
+.faq-answer{ 
+     padding: 0 30px;
+    border-radius: 0 0 20px 20px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #675D5D;
+    border: 1px solid #d5d5d5;
+    top: -10px;
+    position: relative;
+}
+
+.faq-container{ margin-top: 25px;}
+
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: #939191;
+  color: #fff;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: background .2s ease;
+}
+
+.custom-nav:hover {
+  background: #3d7a2b;
+}
+
+.slider-prev {
+  left: -20px;
+}
+
+.slider-next {
+  right: -20px;
+}
+
+
+
+
+    /* Ajuste visual em telas pequenas */
+    @media (max-width: 991px) {
+      .img-doc { width: 100%; }
+    }
+
+    @media (max-width: 768px) {
+
+      .documentacao-header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .documentacao-header-left,
+      .documentacao-header-right {
+        width: 100%;
+        text-align: center;
+        margin-top: 0;
+      }
+
+      .documentacao-header-logo { width: 60%; }
+
+      .img-doc { width: 50%;margin-top: -30px;}
+
+      .documentacao-step-text { font-size: 16px;line-height: 24px;}
+
+      .documentacao-header-side-image { margin: auto;}
+
+      .documentacao-step-title{ font-size: 24px;}
+
+      .documentacao-step-item{ text-align: left;padding: 10px 20px;}
+
+      .linha-doc{ margin-top: 25px;margin-bottom: 25px;}
+
+      .documentacao-steps-container{ padding: 0; }
+
+      .intro .documentacao-step-title{font-size: 24px;}
+
+       .slider-prev { left: -5px; }
+  .slider-next { right: -5px; }
+
+
+
+    }
+
+    @media (max-width: 567px) {
+
+      .documentacao-header-logo { width: 100%; }
+
+      .img-doc {
+        width: 70%;
+        margin-top: -45px;
+      }
+    }
+
+    /* Owl item styling (optional but helps visuals) */
+    .owl-carousel .item { text-align: center; }
+    .owl-carousel .item img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .owl-carousel .numero { font-weight: 700;
+    margin-bottom: 8px;
+    background: #44c705;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #504d4d;
+    float: right;
+    position: absolute;
+    right: 8px;
+    border-radius: 30px;
+    top: 2px; }
+  </style>
+
+</head>
+
+<body>
+  <div id="wrapper" class="conteudo">
+
+    <section class="documentacao-header-section" aria-label="section">
+ 
+
+      <div class="documentacao-header-container">
+
+        <!-- ESQUERDA -->
+        <div class="documentacao-header-left">
+          <img src="images/logo-coffee-n.png" alt="Logo" class="documentacao-header-logo">
+          <p class="documentacao-header-subtext">
+            Guia Completo de Uso da Plataforma Documentos
+          </p>
+        </div>
+
+        <!-- DIREITA -->
+        <div class="documentacao-header-right">
+          <div class="documentacao-header-side-image">
+            <img src="images/img-doc.png" alt="Imagem ilustrativa" class="img-doc">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="space-40"></div>
+
+      <div class="documentacao-steps-section">
+        <div class="documentacao-steps-container">
+
+          <!-- 01 Introdução -->
+          <div class="documentacao-step-item intro">
+            <h3 id="sec1" class="documentacao-step-title">1. Introdução</h3>
+            <p class="documentacao-step-text">
+              Este guia foi desenvolvido para ajudar você a entender todo o funcionamento da área de documentos, amostras, fases de envio e rastreamento dentro da <strong>plataforma Coffeechain.</strong> O objetivo é fornecer instruções detalhadas, passo a passo, para que você consiga acompanhar, enviar e validar todas as informações necessárias durante o processo de exportação do seu café.
+            </p>
+            <p class="documentacao-step-text">
+              Aqui, você encontrará explicações claras sobre como navegar entre as telas, como enviar documentos, como aprovar ou rejeitar amostras e como acompanhar o tracking da sua mercadoria após o embarque. Tudo foi estruturado de forma didática para garantir que você tenha total autonomia dentro da plataforma.
+            </p>
+          </div>
+
+          <!-- 02 Acesso e Navegação Inicial -->
+          <div id="sec2" class="documentacao-step-item">
+            <h3 class="documentacao-step-title">2. Acesso e Navegação Inicial</h3>
+            <p class="documentacao-step-text">
+              Para acessar a área de documentos e iniciar a gestão do seu processo, siga as etapas abaixo:
+            </p>
+
+        <div class="slider-wrapper">
+           <button class="custom-nav slider-prev">&#10094;</button>
+
+            <div class="owl-carousel owl-theme slider-documentos">
+              <div class="item">
+                <div class="numero">1</div>
+                <img src="images/tela1.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">2</div>
+                <img src="images/tela2.svg" alt="tela 2">
+              </div>
+
+              <div class="item">
+                <div class="numero">3 e 4</div>
+                <img src="images/tela3.svg" alt="tela 3">
+              </div>
+            </div> 
+              <button class="custom-nav slider-next">&#10095;</button>
+          </div>
+
+            <ul class="documentacao-step-text">
+              <li>1. Acesse a plataforma Coffeechain usando seu login e senha.</li>
+              <li>2. No menu superior, clique na opção <strong>“Documentos”</strong>.</li>
+              <li>3. Na tela exibida, você verá uma visão geral de <strong>todos os seus contratos disponíveis.</strong></li>
+              <li>4. Para acessar os detalhes de um contrato, clique no <strong>ícone de documento</strong> ao lado dele.</li>
+            </ul>
+
+            <p class="documentacao-step-text">
+              Essa será a porta de entrada para todas as etapas relacionadas às amostras, documentos e rastreamento.
+            </p>
+          </div>
+
+          <!-- 03 Estrutura da Tela do Contrato -->
+          <div id="sec3" class="documentacao-step-item">
+            <div class="documentacao-step-content">
+              <h3 class="documentacao-step-title">3. Conhecendo a Plataforma</h3>
+              <p class="documentacao-step-text">
+                Dentro da área <strong>Contrato</strong>, você encontrará todos os documentos relacionados ao seu processo de exportação.
+                Essa área organiza tudo que a Coffeechain libera ao longo das fases: desde documentos iniciais até confirmações finais
+                após o embarque. É aqui que você visualiza, aprova, rejeita e faz o acompanhamento completo de cada arquivo enviado.
+              </p>
+
+  <div class="slider-wrapper">
+           <button class="custom-nav slider-prev">&#10094;</button>
+             <div class="owl-carousel owl-theme slider-documentos">
+              <div class="item">
+                <div class="numero">3.1</div>
+                <img src="images/tela9.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">3.2</div>
+                <img src="images/tela8.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">3.3</div>
+                <img src="images/tela4.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">3.4</div>
+                <img src="images/tela5.svg" alt="tela 2">
+              </div>
+
+              <div class="item">
+                <div class="numero">3.5</div>
+                <img src="images/tela10.svg" alt="tela 3">
+              </div>
+
+               <div class="item">
+                <div class="numero">3.7</div>
+                <img src="images/tela6.svg" alt="tela 3">
+              </div>
+            </div>
+              <button class="custom-nav slider-next">&#10095;</button>
+            </div>
+
+
+
+             <!-- Filtrar Documentos -->
+              <p id="sec3-1" class="documentacao-step-text tit"><strong>3.1 Amostra e Contrato</strong></p>
+
+<p class="documentacao-step-text">
+  No campo <strong>Amostra</strong>, você poderá visualizar todo o histórico de amostras enviadas, acompanhar cada etapa e gerenciar sua decisão sobre elas. Sempre que houver uma amostra pendente, você pode analisar os detalhes e selecionar o status correspondente:
+</p>
+
+<ul class="documentacao-step-text">
+  <li><strong>Aprovado</strong> – confirma que a amostra está de acordo com o esperado e permite que o processo avance.</li>
+  <li><strong>Rejeitado</strong> – indica que a amostra não atende aos requisitos. Quando rejeitada, uma nova amostra será enviada e o histórico será mantido.</li>
+</ul>
+
+<p class="documentacao-step-text">
+  No campo <strong>Contrato</strong>, você terá acesso ao ícone de rastreamento (Tracking), que direciona para um link externo onde é possível acompanhar a movimentação do café em tempo real. Esse link será disponibilizado assim que o processo de embarque for iniciado e o número da reserva estiver ativo.
+</p>
+ <hr class="linha-doc">
+
+             <!-- Filtrar Documentos -->
+              <p id="sec3-2" class="documentacao-step-text tit"><strong>3.2 Filtrar Documentos</strong></p>
+              <p class="documentacao-step-text">
+                A plataforma oferece opções de filtro para facilitar a busca por documentos específicos. Eles ficam logo abaixo
+                das seções Amostra e Contrato. Você pode filtrar por:
+              </p>
+              <ul class="documentacao-step-text">
+                <li>Tipo de documento</li>
+                <li>Status (pendente, expirado, cancelado, aprovado, pré-aprovado ou rejeitado)</li>
+              
+              </ul>
+              <p class="documentacao-step-text">
+                O uso dos filtros é ideal quando há muitos documentos no contrato, permitindo encontrar rapidamente
+                o que precisa ser analisado.
+              </p>
+
+<hr class="linha-doc">
+
+              <!-- Estrutura da Lista de Documentos -->
+              <p id="sec3-3" class="documentacao-step-text tit"><strong>3.3 Visualizar os documentos</strong></p>
+              <p class="documentacao-step-text">
+                Todos os documentos são listados de forma organizada, exibindo tipo de documento, numeração, status, prazo, comentário de aprovação, itens pendentes e documentação.<br>
+                Nessa área você pode:
+              </p>
+              <ul class="documentacao-step-text">
+              <li><strong>1. Enviar</strong> — envie apenas arquivos que forem solicitados.</li>
+                <li><strong>2. Baixar</strong> — salva o arquivo em seu dispositivo.</li>
+                <li><strong>3. Aprovar</strong> — aceita oficialmente o documento.</li>
+                <li><strong>4. Rejeitar</strong> — envia de volta para correção, caso algo esteja errado.</li>
+              </ul>
+<hr class="linha-doc">
+              <!-- Status de Documentos -->
+              <p id="sec3-4" class="documentacao-step-text tit"><strong>3.4 Entendendo os status dos documentos</strong></p>
+              <p class="documentacao-step-text">
+                Cada documento exibido pode estar em um dos seguintes status:
+              </p>
+              <ul class="documentacao-step-text">
+                <li><strong>Pendente</strong> — o documento está aguardando sua análise. Esse é o status mais importante para evitar atrasos.</li>
+                <li><strong>Aprovado</strong> — você validou o documento e ele segue para a próxima etapa do processo.</li>
+                <li><strong>Rejeitado</strong> — você rejeitou o documento ou a Coffeechain identificou a necessidade de correção.</li>
+              </ul>
+              <p class="documentacao-step-text">
+                A plataforma destaca facilmente os itens pendentes, garantindo que você não perca nenhuma etapa de aprovação.
+              </p>
+<hr class="linha-doc">
+              <!-- Reenvio e Histórico -->
+             <p id="sec3-5" class="documentacao-step-text tit"><strong>3.5 Reenvio, Correções e Histórico dos Documentos</strong></p>
+
+<ul class="documentacao-step-text">
+  <li><strong>Aprovado</strong> – confirma que o documento está correto, atende aos requisitos.</li>
+  <li><strong>Rejeitado</strong> – indica que o documento precisa de ajustes. Quando isso acontecer, a pessoa responsável receberá uma notificação com o motivo da recusa e deverá realizar um novo envio.</li>
+
+</ul>
+
+<p class="documentacao-step-text">
+  Sempre que um documento for rejeitado, ele pode ser enviado novamente. Não existe limite de tentativas:
+  você pode reenviar quantas vezes forem necessárias até que o documento seja aprovado.
+</p>
+
+<p class="documentacao-step-text">
+  Todos os documentos rejeitados permanecem registrados no <strong>histórico do contrato</strong>,
+  garantindo transparência total. Isso permite que você consulte versões anteriores, verifique o motivo da rejeição e acompanhe toda a linha do tempo de envios, aprovações e atualizações.
+</p>
+
+<hr class="linha-doc">
+              <!-- Boas práticas, formato e tamanho -->
+              <p id="sec3-6" class="documentacao-step-text tit"><strong>3.6 Limites e boas práticas para envio</strong></p>
+              <ul class="documentacao-step-text">
+                <li><strong>Tamanho máximo:</strong> 2 MB por arquivo.</li>
+                <li><strong>Formatos aceitos:</strong> PDF, JPG, PNG e Doc.</li>
+                <li><strong>Nome do arquivo:</strong> evite caracteres especiais; use nomes claros e objetivos.</li>
+                <li><strong>Antes de aprovar:</strong> revise cuidadosamente todas as informações para evitar retrabalho.</li>
+                <li><strong>Como evitar atrasos:</strong> acompanhe frequentemente o e-mail e, principalmente, a plataforma.</li>
+              </ul>
+
+ <hr class="linha-doc">             <!-- Notificações -->
+              <p id="sec3-7" class="documentacao-step-text tit"><strong>3.7 Como funcionam as notificações por e-mail</strong></p>
+              <p class="documentacao-step-text">
+                A plataforma envia notificações automáticas sempre que houver alguma atualização importante relacionada aos documentos
+                ou às amostras. São enviados alertas para:
+              </p>
+              <ul class="documentacao-step-text">
+                <li>Envio de um novo documento para sua análise.</li>
+                <li>Resultado da análise da Coffeechain (aprovado ou rejeitado).</li>
+                <li>Envio de amostras.</li>
+                <li>Atualizações gerais do processo.</li>
+              </ul>
+              <p class="documentacao-step-text">
+                Tanto você quanto a equipe da Coffeechain recebem essas notificações. Elas podem chegar a qualquer momento,
+                mas, na dúvida, sempre verifique também o painel da plataforma para não perder nenhuma atualização.
+              </p>
+             <!-- Problemas e erros -->
+              <div class="prob"><p class="documentacao-step-text"><strong>O que fazer se algo der errado</strong></p>
+              <ul class="documentacao-step-text">
+                <li><strong>Falha no envio:</strong> tente novamente mais tarde. Se persistir, acesse o menu superior “Contato”
+                  e envie um formulário explicando o ocorrido, mencionando que o problema ocorreu na área de documentação.</li>
+                <li><strong>Arquivo no formato errado:</strong> envie novamente no formato correto.</li>
+                <li><strong>Problema ao abrir o tracking:</strong> aguarde atualizações do sistema externo, que pode demorar para atualizar o link.</li> 
+              </div>
+                
+              </ul>
+
+             
+              <!-- Local reservado para a imagem -->
+              <div class="documentacao-img">
+                <!-- imagem do filtro será adicionada posteriormente -->
+              </div>
+            </div> <!-- .documentacao-step-content -->
+          </div> <!-- .documentacao-step-item -->
+
+          <!-- 04 Processo Passo a Passo -->
+          <div id="sec4" class="documentacao-step-item">
+            <h3 class="documentacao-step-title">4. Processo Completo Passo a Passo</h3>
+
+            <p class="documentacao-step-text">
+              A seguir está uma explicação detalhada de todas as etapas do processo dentro da plataforma Coffeechain,
+              descrevendo como enviar documentos, analisar amostras e acompanhar o envio da sua carga.
+              Este passo a passo foi criado para garantir autonomia total e evitar dúvidas durante o processo.
+            </p>
+
+      <div class="slider-wrapper">
+           <button class="custom-nav slider-prev">&#10094;</button>
+            <div class="owl-carousel owl-theme slider-documentos">
+              <div class="item">
+                <div class="numero">4.1</div>
+                <img src="images/tela11.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">4.3</div>
+                <img src="images/tela12.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">4.3</div>
+                <img src="images/tela13.svg" alt="tela 1">
+              </div>
+
+              <div class="item">
+                <div class="numero">4.3</div>
+                <img src="images/tela14.svg" alt="tela 2">
+              </div>
+
+              <div class="item">
+                <div class="numero">4.4</div>
+                <img src="images/tela15.svg" alt="tela 3">
+              </div>
+
+               <div class="item">
+                <div class="numero">4.4</div>
+                <img src="images/tela16.svg" alt="tela 3">
+              </div>
+
+              <div class="item">
+                <div class="numero">4.4</div>
+                <img src="images/tela16.svg" alt="tela 3">
+              </div> 
+
+              <div class="item">
+                <div class="numero">4.4</div>
+                <img src="images/tela18.svg" alt="tela 3">
+              </div>
+
+                <div class="item">
+                <div class="numero">4.5</div>
+                <img src="images/tela19.svg" alt="tela 3">
+              </div>
+
+                   <div class="item">
+                <div class="numero">4.6</div>
+                <img src="images/tela20.svg" alt="tela 3">
+              </div>
+
+            </div>
+<button class="custom-nav slider-next">&#10095;</button>
+</div>
+
+            <!-- 4.1 Instruções de Envio -->
+           <p id="sec4-1" class="documentacao-step-text tit"><strong>4.1 Envio de documento</strong></p>
+
+natacao<p class="documentacao-step-text">
+  No campo <strong>Fases</strong>, o primeiro documento obrigatório é o <strong>“Shipping Instruction”</strong>.
+  Ele é essencial para dar início formal ao processo de exportação.
+</p>
+
+<p class="documentacao-step-text">Para realizar o envio corretamente:</p>
+
+<ul class="documentacao-step-text">
+  <li><strong>Enviar</strong> — No campo <strong>"Anexar documentos"</strong>, clique no botão correspondente ao documento, por exemplo: <strong>"Shipping Instruction"</strong>.</li>
+  <li>Anexe o arquivo solicitado no campo de <strong>"Envio de documentos"</strong>.</li>
+  <li><strong>Aguarde</strong> — Após o envio, a Coffeechain será automaticamente notificada.</li>
+</ul>
+
+<p class="documentacao-step-text">
+  Depois do envio, o documento seguirá para análise. Assim que houver um parecer,
+  você receberá uma notificação por e-mail.
+</p>
+
+<hr class="linha-doc">
+            <!-- 4.2 Análise -->
+            <p id="sec4-2" class="documentacao-step-text tit"><strong>4.2 Análise e Aprovação/Recusa das Instruções de Envio</strong></p>
+
+            <p class="documentacao-step-text">
+              Após o envio do documento, a equipe da Coffeechain avaliará a conformidade das informações.
+            </p>
+
+            <p class="documentacao-step-text"><strong>Se o documento for recusado:</strong></p>
+            <ul class="documentacao-step-text">
+              <li>Você receberá um e-mail detalhando o motivo.</li>
+              <li>Acesse o contrato novamente, revise a observação e envie uma nova versão.</li>
+              <li>Aguarde o novo ciclo de análise.</li>
+            </ul>
+
+            <p class="documentacao-step-text"><strong>Se o documento for aprovado:</strong></p>
+            <ul class="documentacao-step-text">
+              <li>Uma amostra de café será enviada para você.</li>
+              <li>Você receberá um e-mail assim que a amostra for postada, informando que a avaliação deve ser realizada.</li>
+            </ul>
+<hr class="linha-doc">
+            <!-- 4.3 Amostra -->
+            <p id="sec4-3" class="documentacao-step-text tit">
+  <strong>4.3 Recebimento e Avaliação de Amostra</strong>
+</p>
+
+<p class="documentacao-step-text">
+  Quando a amostra for recebida, acesse o campo <strong>Amostra</strong> na plataforma.
+  Todas as amostras enviadas ficam registradas em histórico, facilitando a consulta.
+</p>
+
+<ul class="documentacao-step-text">
+  <li>Acesse o campo <strong>Amostra</strong>.</li>
+  <li>Clique no <strong>ícone de olho</strong> para visualizar o histórico completo.</li>
+  <li>
+    Se houver uma amostra disponível, clique em <strong>Ações</strong> para aprová-la ou rejeitá-la.
+     
+  </li>
+  <li>Adicione um comentário justificando sua decisão.</li>
+</ul>
+
+<p class="documentacao-step-text">
+  <strong>Importante:</strong> Se a amostra for rejeitada, uma nova será enviada automaticamente.
+  Se for aprovada, a Coffeechain prosseguirá para a etapa de envio e liberação dos documentos.
+</p>
+
+<hr class="linha-doc">
+      <!-- 4.4 Documentos -->
+<p id="sec4-4" class="documentacao-step-text tit">
+  <strong>4.4 Liberação e Gestão dos Documentos</strong>
+</p>
+
+<p class="documentacao-step-text">
+  Ao longo do processo, diversos documentos serão liberados pela Coffeechain. Cada um deles fica disponível
+  para visualização, download e aprovação. A plataforma organiza tudo de forma clara para facilitar o controle
+  e garantir que nenhuma etapa seja ignorada.<br>
+  Nesta tela você pode:
+</p>
+
+<ul class="documentacao-step-text">
+  <li>
+    <strong>Baixar arquivos</strong> — usando como exemplo o documento <strong>“Marcação de Sacaria”</strong>,
+    observe que ele está com status <strong>“Pendente”</strong>, indicando que ainda requer aprovação.
+    Para visualizá-lo, clique no <strong>ícone de download</strong>.
+  </li>
+
+  <li>
+    <strong>Aprovar ou rejeitar documentos</strong> — clique no <strong>ícone de ações</strong> para aprovar ou
+    rejeitar o arquivo. Caso seja rejeitado, aguarde a Coffeechain enviar uma nova versão corrigida.
+  </li>
+</ul>
+
+<p class="documentacao-step-text prob">
+  <strong>Observação:</strong> assim que o documento for reenviado, o processo deve ser repetido:
+  baixar, visualizar e aprovar ou rejeitar novamente. No exemplo acima, o documento foi aprovado e a fase 2
+  já pode ser iniciada. Lembrando que documentos rejeitados permanecem registrados no histórico da documentação.<br>
+  As atualizações podem gerar e-mails de notificação, permitindo que você acompanhe o fluxo. Porém, o ideal é sempre verificar a plataforma regularmente para garantir que nenhuma etapa seja perdida.
+</p>
+
+           
+<hr class="linha-doc">
+            <!-- 4.5 Tracking -->
+            <p id="sec4-5" class="documentacao-step-text tit"><strong>4.5 Envio do Café e Rastreamento</strong></p>
+
+            <p class="documentacao-step-text">
+              Quando a amostra e todos os documentos necessários para o envio forem aprovados, inicia-se o envio da mercadoria.
+              Nesse momento, o número da reserva e o link de acompanhamento passam a aparecer na área do contrato.<br>
+              Para rastrear é fácil:
+            </p>
+
+            <ul class="documentacao-step-text">
+              <li>Acesse o campo  <strong>Contrato</strong>.</li>
+              <li>Localize o <strong>número da reserva</strong>.</li>
+              <li>Clique no <strong>ícone de Tracking</strong> para acompanhar a carga em tempo real.</li>
+            </ul>
+
+         <p class="documentacao-step-text prob">
+  Você será direcionado para um link externo, onde poderá acompanhar cada movimentação do container até a chegada ao destino final. Lembre-se de que as atualizações desse sistema externo podem levar algum tempo para serem refletidas no link.
+</p>
+
+<hr class="linha-doc">
+
+       <!-- 4.6 Baixar Contrato -->
+<p id="sec4-6" class="documentacao-step-text tit">
+  <strong>4.6 Baixar Contrato</strong>
+</p>
+
+<p class="documentacao-step-text prob">
+  Após a conclusão de todo o ciclo de envio e aprovação/rejeição da documentação, passando por todas as fases,
+  o contrato é encerrado pela Coffeechain. Mesmo assim, <strong>todo o histórico permanece disponível</strong>
+  para futuras consultas, garantindo segurança e rastreabilidade completa. Além disso,
+  o <strong>contrato completo</strong> também fica disponível para download por meio da opção <strong>"Contrato"</strong>,
+  localizada no início da página.
+</p>
+
+
+          </div>
+
+          
+          <!-- 05 Resumo Final -->
+          <div id="sec5" class="documentacao-step-item">
+            <h3 class="documentacao-step-title">5. Resumo Final do Processo</h3>
+
+            <p class="documentacao-step-text">
+              Durante todo o processo, você poderá gerenciar amostras, acompanhar documentos e verificar o tracking
+              da mercadoria de forma simples e organizada. A plataforma Coffeechain foi criada para tornar o fluxo de
+              exportação mais transparente, rápido e seguro.
+            </p>
+
+            <ul class="documentacao-step-text">
+              <li>Gerenciar amostras no campo <strong>Amostra</strong></li>
+              <li>Acompanhar o tracking no campo <strong>Contrato</strong></li>
+              <li>Controlar documentos no campo <strong>Fases</strong></li>
+            </ul>
+
+   <p class="documentacao-step-text">
+  Após a conclusão, o contrato é encerrado pela Coffeechain.<strong> Todo o histórico permanece disponível</strong>
+  para futuras consultas. Lembrando que também é possível <strong>baixar o contrato completo</strong>.
+</p>
+
+          </div>
+
+<!-- 06 Perguntas Frequentes e Orientações Gerais --> <div id="sec6" class="documentacao-step-item">
+
+<h3 class="documentacao-step-title">6. Perguntas Importantes e Orientações Gerais</h3>
+
+<div class="faq-container">
+
+  <!-- FAQ ITEM -->
+  <div class="faq-item">
+    <button id="sec6-1" class="faq-question">6.1 Como funcionam os status dos documentos</button>
+    <div class="faq-answer">
+      <p>Todos os documentos enviados passam por análise e são identificados com um status dentro do painel:</p>
+      <ul>
+        <li><strong>Pendente</strong> — o documento foi enviado e aguarda análise.</li>
+        <li><strong>Aprovado</strong> — o documento está correto e foi validado pela equipe.</li>
+        <li><strong>Reprovado</strong> — o documento necessita correção e deve ser reenviado.</li>
+      </ul>
+      <p>Caso um documento seja rejeitado, você pode reenviar <strong>quantas vezes for necessário</strong>.
+        As versões rejeitadas permanecem registradas no histórico para controle e transparência.</p>
+    </div>
+  </div>
+
+  <!-- FAQ ITEM -->
+  <div class="faq-item">
+    <button id="sec6-2" class="faq-question">6.2 Como funcionam as notificações por e-mail</button>
+    <div class="faq-answer">
+      <p>A plataforma envia e-mails automáticos sempre que ocorre uma atualização importante, como:</p>
+      <ul>
+        <li>Upload de novos documentos para análise.</li>
+        <li>Envio de uma nova amostra.</li>
+        <li>Aprovação ou rejeição de itens enviados.</li>
+      </ul>
+      <p>Todas as partes — cliente e Coffeechain — recebem as notificações.  
+        <strong>Na dúvida, consulte sempre a plataforma.</strong></p>
+    </div>
+  </div>
+
+  <!-- FAQ ITEM -->
+  <div class="faq-item">
+    <button id="sec6-3" class="faq-question">6.3 O que fazer se algo der errado</button>
+    <div class="faq-answer">
+      <ul><br>
+        <li><strong>Se o upload falhar:</strong> tente novamente após alguns minutos. Se persistir, use a opção
+          <strong>Contato</strong> no menu.</li>
+        <li><strong>Formato errado:</strong> envie o arquivo dentro dos formatos aceitos.</li>
+        <li><strong>Formatos aceitos:</strong> PDF, JPG, PNG e Word.</li>
+        <li><strong>Tracking não abre:</strong> aguarde atualização do sistema externo.</li><br>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ ITEM -->
+  <div class="faq-item">
+    <button id="sec6-4" class="faq-question">6.4 Limites e Boas Práticas</button>
+    <div class="faq-answer">
+      <ul><br>
+        <li><strong>Tamanho máximo:</strong> 2MB.</li>
+        <li><strong>Nome do arquivo:</strong> evitar caracteres especiais.</li>
+        <li><strong>Formato recomendado:</strong> PDF.</li>
+      </ul>
+      <p>Consulte sempre a plataforma antes de aprovar ou rejeitar documentos.</p>
+    </div>
+  </div>
+
+  <!-- FAQ ITEM -->
+  <div class="faq-item">
+    <button id="sec6-5" class="faq-question">6.5 Histórico de Documentos e Amostras</button>
+    <div class="faq-answer">
+      <p>Todo o histórico fica salvo permanentemente dentro da plataforma.<br>
+      Documentos aprovados podem ser baixados mesmo após o encerramento.</p>
+    </div>
+  </div>
+
+  <!-- FAQ ITEM -->
+  <div class="faq-item">
+    <button id="sec6-6" class="faq-question">6.6 O que acontece após o pós-embarque</button>
+    <div class="faq-answer">
+      <p>Após o embarque confirmado, o contrato será encerrado, mas <strong>todos os dados permanecem disponíveis
+        para sempre</strong>.</p>
+      <ul>
+        <li>Você pode baixar documentos quantas vezes desejar.</li>
+        <li>Basta acessar o Painel de Documentos e selecionar o contrato desejado.</li>
+      </ul>
+      <p>Assim, a plataforma garante rastreabilidade completa e transparência.</p>
+    </div>
+  </div>
+
+</div><!-- fim -->
+
+
+
+      </div> <!-- .documentacao-steps-section -->
+ 
+
+    </section>
+
+  </div> <!-- #wrapper -->
+
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script type="text/javascript">
+ $(document).ready(function () {
+  var owl = $(".slider-documentos").owlCarousel({
+    loop: false,
+    margin: 20,
+    nav: false,  // DESATIVA as setas internas do Owl
+    dots: false,
+    responsive: {
+      0: { items: 1 },
+      600: { items: 1 },
+      1400: { items: 2 }
+    }
+  });
+
+  // SETAS EXTERNAS
+  $(".slider-next").click(function () {
+    owl.trigger("next.owl.carousel");
+  });
+
+  $(".slider-prev").click(function () {
+    owl.trigger("prev.owl.carousel");
+  });
+});
+
+
+document.querySelectorAll(".faq-question").forEach(button => {
+  button.addEventListener("click", () => {
+    
+    const answer = button.nextElementSibling;
+    const isOpen = answer.style.maxHeight;
+
+     
+    document.querySelectorAll(".faq-answer").forEach(a => a.style.maxHeight = null);
+    document.querySelectorAll(".faq-question").forEach(q => q.classList.remove("active"));
+ 
+    if (!isOpen) {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+      button.classList.add("active");
+    }
+  });
+});
+  </script>
+
+</body>
+</html>
